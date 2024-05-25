@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页-春天使者</title>
+    <script>
+        function detectDevice() {
+            alert(111)
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = './pages/mobile_index/local.html';
+                return "mobile";
+            } else {
+                window.location.href = './pages/index/local.html';
+            }
+        }
+
+        function jump(){
+            var deviceType = detectDevice();
+            console.log("Device Type:", deviceType);
+            
+        }
+        window.onload = jump();
+
+    </script>
+</head>
+<body>
+   
+</body>
+</html>

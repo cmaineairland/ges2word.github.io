@@ -1,0 +1,63 @@
+.head {
+    /* 设置网页头部底色 */
+    background-color: #3498db;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 10%;
+}
+
+.head-button {
+    /* 设置网页头部按钮 */
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.head-button:hover {
+    background-color: #2980b9;
+}
+
+.button-container {
+    /* 设置网页头部按钮位置 */
+    position: absolute;
+    top: 0%;
+    left: 18%;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* 将按钮平均分布在容器中 */
+}
+
+.glass-container {
+    /* 设置网页主体背景 */
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    width: 100%;
+    height: 90%;
+    background-image: url('./image/background.jpg');
+    background-position: right 0px top -200px;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.glass-content {
+    /* 设置网页主体毛玻璃效果 */
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    /* 调整模糊程度 */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* 背景颜色，透明度可调整 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

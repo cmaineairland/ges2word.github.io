@@ -1,0 +1,72 @@
+.index_picture {
+    /* 设置主页图片 */
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+}
+
+.index_word {
+    position: absolute;
+    text-align: right;
+    font-weight: 500;
+    top: -15%;
+    left: 0%;
+    width: 50%;
+    height: 120%;
+}
+
+.index_button_box {
+    position: absolute;
+    top: 75%;
+    left: 20%;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.index_button {
+    background: linear-gradient(to left,
+            rgba(18, 194, 233, 0.6),
+            rgba(196, 113, 237, 0.6),
+            rgba(246, 79, 89, 0.6));
+    color: #fff;
+    border-radius: 30px;
+    padding: 20px 30px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    animation: fadeInLeft 2.5s ease-out;
+}
+
+.index_button:hover {
+    background-color: #2980b9;
+}
+
+.gradient-text {
+    font-size: 120px;
+    margin-bottom: -150px;
+    background: linear-gradient(to left,
+            #12C2E9, #C47189, #F64F59);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fadeInLeft 2.5s ease-out;
+    /* 设置发光效果，可以根据需要调整参数 */
+}
+
+/* 定义淡入动画 */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
