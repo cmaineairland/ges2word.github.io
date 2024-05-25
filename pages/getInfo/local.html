@@ -1,0 +1,72 @@
+<!--
+ * @Date: 2024-05-25 22:38:31
+ * @LastEditors: Qianshanju
+ * @E-mail: z1939784351@gmail.com
+ * @LastEditTime: 2024-05-25 23:00:46
+ * @FilePath: \gesrec\pages\getInfo\local.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Python Script</title>
+    <script>
+        function runScript() {
+
+            var data = {
+                type:'log_in',
+                username: 'username',
+                password: 'password',
+            };
+
+            fetch('http://127.0.0.1:5000/run_script', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Login failed');
+            }
+        })
+        .then(data => {
+            // 在此处理后端返回的响应数据
+            // 根据后端返回的结果进行页面跳转
+            if (data.message=='success') {
+                var cookie = username + '=' + password;
+                var expirationDate = new Date();
+                expirationDate.setTime(expirationDate.getTime() + (7 * 24 * 60 * 60 * 1000));
+                cookie += '; expires=' + expirationDate.toUTCString();
+                document.cookie = cookie;
+                window.location.href = '/'; // 登录成功，跳转到首页
+            } 
+            else if(data.message=='password wrong'){
+                // 登录失败，可以显示错误消息或执行其他操作
+                alert("用户名或密码错误！");
+            }
+            else if(data.message=='account not exists'){
+                alert("用户不存在！");
+            }
+            else{
+                alert("未知错误");
+            }
+            // 可以根据响应结果进行页面跳转或其他操作
+        })
+        .catch(error => {
+            console.error('Login error:', error.message);
+        });
+
+    }
+    </script>
+</head>
+<body>
+    <h1>Run Python Script</h1>
+    <button onclick="runScript()">Run Script</button>
+    <pre id="output"></pre>
+</body>
+</html>
