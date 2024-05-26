@@ -230,3 +230,7 @@ input[type="range"]::-webkit-slider-thumb {
     text-align: left;
     margin-left: 55px;
 }
+
+.fileInput {
+    display: none;
+}
