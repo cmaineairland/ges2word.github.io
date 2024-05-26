@@ -2,7 +2,7 @@
  * @Date: 2024-05-25 09:32:51
  * @LastEditors: Qianshanju
  * @E-mail: z1939784351@gmail.com
- * @LastEditTime: 2024-05-25 15:32:24
+ * @LastEditTime: 2024-05-26 13:39:59
  * @FilePath: \gesrec\global.js
  */
 /*
@@ -12,6 +12,8 @@
  * @LastEditTime: 2024-05-25 11:08:38
  * @FilePath: \gesrec\global.js
  */
+
+let fetchIp = 'http://127.0.0.1:5000'
 
 function inner_head() {
 
@@ -43,8 +45,37 @@ function check_cookie() {
 
 }
 
+function getFetchIp() {
+    fetch('http://127.0.0.1:5000', { method: 'POST' })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // 处理成功的响应
+            fetchIp = 'http://127.0.0.1:5000'
+        })
+        .catch(error => {
+            console.error('Error fetching from 127.0.0.1:', error);
+            // 如果请求失败，则尝试请求另一个地址
+            return fetch('http://172.20.104.194', { method: 'POST' });
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // 处理成功的响应
+            fetchIp = 'http://172.20.104.194:5000'
+        })
+        .catch(error => {
+            console.error('Error fetching from 172.20.104.194:', error);
+            // 处理所有请求都失败的情况
+        });
+
+}
+
 window.onload = function () {
-    inner_head();
+    getFetchIp()
+    //inner_head();
     //check_cookie();
 };
 
