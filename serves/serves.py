@@ -2,7 +2,7 @@
 Date: 2024-05-25 22:41:42
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-27 02:21:08
+LastEditTime: 2024-05-27 02:28:14
 FilePath: \gesrec\serves\serves.py
 '''
 from flask import Flask, jsonify, request
@@ -14,6 +14,7 @@ app = Flask(__name__)
 CORS(app)
 
 
+@app.route('/', methods=['POST'])
 def getMessage():
     data = request.get_json()
     result = {'result': ''}
