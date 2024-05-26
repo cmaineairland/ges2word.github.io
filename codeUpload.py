@@ -2,7 +2,7 @@
 Date: 2024-05-26 13:53:59
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-26 14:03:40
+LastEditTime: 2024-05-26 14:05:03
 FilePath: \gesrec\codeUpload.py
 '''
 import subprocess
@@ -40,8 +40,7 @@ if __name__ == "__main__":
     # List of commands to run
     updateInfo = input('请输入更新信息：')
     commands = [
-        'git add .', f"git commit -m '{updateInfo}'",
-        'git push -u origin main'
+        'git add .', f"git commit -m {updateInfo}", 'git push -u origin main'
     ]
 
     run_commands(commands)
