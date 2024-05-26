@@ -2,7 +2,7 @@
  * @Date: 2024-05-25 09:32:51
  * @LastEditors: Qianshanju
  * @E-mail: z1939784351@gmail.com
- * @LastEditTime: 2024-05-26 14:32:22
+ * @LastEditTime: 2024-05-26 16:28:34
  * @FilePath: \gesrec\global.js
  */
 /*
@@ -57,14 +57,14 @@ function getFetchIp() {
         .catch(error => {
             console.error('Error fetching from 127.0.0.1:', error);
             // 如果请求失败，则尝试请求另一个地址
-            return fetch('http://172.20.104.194:5000', { method: 'POST' });
+            return fetch('http://182.92.78.173:5000', { method: 'POST' });
         })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             // 处理成功的响应
-            fetchIp = 'http://172.20.104.194:5000'
+            fetchIp = 'http://182.92.78.173:5000'
         })
         .catch(error => {
             console.error('Error fetching from 172.20.104.194:', error);
