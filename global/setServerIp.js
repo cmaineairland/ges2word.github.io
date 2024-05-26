@@ -9,7 +9,11 @@ async function setServerIp() {
     for (let i = 0; i < servers.length; i++) {
         try {
             const response = await fetch(servers[i], {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ type: 'ping' }) // 添加请求体
             });
             if (response.ok) {
                 serversIp = servers[i];
@@ -17,7 +21,7 @@ async function setServerIp() {
                 return;
             }
         } catch (error) {
-            // Ignore the error and try the next server
+            console.error(`Error connecting to server ${servers[i]}: `, error);
         }
     }
 
