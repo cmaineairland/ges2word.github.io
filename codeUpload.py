@@ -2,7 +2,7 @@
 Date: 2024-05-26 13:53:59
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-26 14:11:46
+LastEditTime: 2024-05-26 15:17:39
 FilePath: \gesrec\codeUpload.py
 '''
 import subprocess
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     # List of commands to run
     updateInfo = input('请输入更新信息：')
     commands = [
-        'git add .', f"git commit -m {updateInfo}", 'git push -u origin main'
+        'git add .', f"git commit -m '{updateInfo}'", 'git push -u origin main'
     ]
 
     hostname = '182.92.78.173'
