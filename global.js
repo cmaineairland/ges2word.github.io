@@ -2,7 +2,7 @@
  * @Date: 2024-05-25 09:32:51
  * @LastEditors: Qianshanju
  * @E-mail: z1939784351@gmail.com
- * @LastEditTime: 2024-05-26 16:28:34
+ * @LastEditTime: 2024-05-26 16:36:43
  * @FilePath: \gesrec\global.js
  */
 /*
@@ -13,7 +13,7 @@
  * @FilePath: \gesrec\global.js
  */
 
-let fetchIp = 'http://172.20.104.194:5000'
+let fetchIp = 'http://182.92.78.173:5000'
 
 function inner_head() {
 
