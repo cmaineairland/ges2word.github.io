@@ -2,7 +2,7 @@
 Date: 2024-05-25 22:41:42
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-26 15:05:33
+LastEditTime: 2024-05-26 23:33:34
 FilePath: \gesrec\serves\serves.py
 '''
 from flask import Flask, jsonify, request
@@ -17,10 +17,12 @@ CORS(app)
 @app.route('/', methods=['POST'])
 def getMessage():
     data = request.get_json()
+    result = {'result': ''}
     if data == None:
-        return 'success'
+        result['result'] = 'success'
+        return result
     print(data)
-    result = {'result': 'value1'}
+
     if data['type'] == 'getNews':
 
         result['result'] = getNews(data['newsTitle'])

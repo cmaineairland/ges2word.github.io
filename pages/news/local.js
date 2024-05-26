@@ -2,6 +2,13 @@
  * @Date: 2024-05-25 20:12:23
  * @LastEditors: Qianshanju
  * @E-mail: z1939784351@gmail.com
+ * @LastEditTime: 2024-05-26 23:41:17
+ * @FilePath: \gesrec\pages\news\local.js
+ */
+/*
+ * @Date: 2024-05-25 20:12:23
+ * @LastEditors: Qianshanju
+ * @E-mail: z1939784351@gmail.com
  * @LastEditTime: 2024-05-26 15:10:05
  * @FilePath: \gesrec\pages\news\local.js
  */
@@ -11,8 +18,8 @@ function changeContent(url) {
         type: 'getNews',
         newsTitle: url
     };
-    console.log(fetchIp);
-    fetch(fetchIp, {
+    console.log(serversIp);
+    fetch(serversIp, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

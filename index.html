@@ -1,31 +1,33 @@
+<!--
+ * @Date: 2024-05-25 20:12:23
+ * @LastEditors: Qianshanju
+ * @E-mail: z1939784351@gmail.com
+ * @LastEditTime: 2024-05-26 23:47:09
+ * @FilePath: \gesrec\index.html
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页-春天使者</title>
-    <script>
-        function detectDevice() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-            if (/android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = './pages/mobile_index/local.html';
-                return "mobile";
-            } else {
-                window.location.href = './pages/index/local.html';
-            }
-        }
-
-        function jump(){
-            var deviceType = detectDevice();
-            console.log("Device Type:", deviceType);
-            
-        }
-        window.onload = jump();
-
-    </script>
+    <script src="./global/setServerIp.js"></script>
+    <script src="./global/checkCookie.js"></script>
 </head>
 <body>
    
 </body>
+<script>
+    function jump() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (/android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.location.href = './pages/mobile_index/local.html';
+        } else {
+            window.location.href = './pages/index/local.html';
+        }
+    }
+    jump();
+
+</script>
 </html>
