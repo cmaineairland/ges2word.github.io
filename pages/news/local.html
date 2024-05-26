@@ -1,3 +1,10 @@
+<!--
+ * @Date: 2024-05-25 20:12:23
+ * @LastEditors: Qianshanju
+ * @E-mail: z1939784351@gmail.com
+ * @LastEditTime: 2024-05-26 14:41:22
+ * @FilePath: \gesrec\pages\news\local.html
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -76,28 +83,6 @@
 </body>
 
 <script>
-    function changeContent(url) {
-    // 获取要修改内容的盒子
-    var box = document.getElementById('article_body');
-    fetch('/news/'+ url)
-    .then(response => {
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.text();
-    })
-    .then(html => {
-    var newContent = html;
-    box.innerHTML = newContent;
-    console.log(html); // 打印获取的网页源代码
-    })
-    .catch(error => {
-    console.error('Fetch failed:', error);
-    });
-    var newContent ;
-    // 修改盒子的内容
-
-}
 </script>
 <script src="static/innerHead.js"></script>
 </html>
