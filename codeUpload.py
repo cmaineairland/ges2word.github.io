@@ -2,7 +2,7 @@
 Date: 2024-05-26 13:53:59
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-26 15:17:39
+LastEditTime: 2024-05-26 15:19:59
 FilePath: \gesrec\codeUpload.py
 '''
 import subprocess
@@ -16,7 +16,8 @@ def run_commands(commands):
             result = subprocess.run(command,
                                     shell=True,
                                     capture_output=True,
-                                    text=True)
+                                    text=True,
+                                    encoding='utf-8')
 
             # Print the command
             print(f"Command: {command}")
