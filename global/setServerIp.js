@@ -2,7 +2,7 @@ let serversIp = null;
 
 async function setServerIp() {
     const servers = [
-        'http://182.92.78.173:5000',
+        'https://182.92.78.173:5000',
         'http://127.0.0.1:5000'
     ];
 
