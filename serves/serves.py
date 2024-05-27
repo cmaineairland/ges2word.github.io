@@ -2,7 +2,7 @@
 Date: 2024-05-25 22:41:42
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-27 02:28:14
+LastEditTime: 2024-05-27 14:33:46
 FilePath: \gesrec\serves\serves.py
 '''
 from flask import Flask, jsonify, request
@@ -22,9 +22,11 @@ def getMessage():
     if 'type' in data and data['type'] == 'ping':
         result['result'] = 'pingSuccess'
         return result, 200
-
     if 'type' in data and data['type'] == 'getNews':
         result['result'] = getNews(data['newsTitle'])
+        return result, 200
+    if 'type' in data and data['type'] == 'Landmarks':
+        result['result'] = 'success'
         return result, 200
     else:
         result['result'] = 'invalid request'
