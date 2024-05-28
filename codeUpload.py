@@ -6,7 +6,6 @@ LastEditTime: 2024-05-27 02:28:45
 FilePath: \gesrec\codeUpload.py
 '''
 import subprocess
-import paramiko
 
 
 def run_commands(commands):

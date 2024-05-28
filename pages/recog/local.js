@@ -3,7 +3,6 @@ const out3 = document.getElementsByClassName('output')[0];
 const controlsElement = document.getElementsByClassName('control')[0];
 const canvasCtx3 = out3.getContext('2d');
 const fpsControl = new FPS();
-let diagonal
 
 
 let intervalId;
@@ -25,11 +24,10 @@ function getVector(isRightHand, landmarks) {
     const vector = [];
     const handSign = isRightHand ? 1 : -1;
     vector.push(handSign);
-    for (let i = 1; i < landmarks.length; i++) {
-        vector.push((landmarks[i].x - landmarks[0].x) * diagonal);
-    }
-    for (let i = 1; i < landmarks.length; i++) {
-        vector.push((landmarks[i].y - landmarks[0].y) * diagonal);
+    for (let i = 0; i < landmarks.length; i++) {
+        vector.push((landmarks[i].x));
+        vector.push((landmarks[i].y));
+        vector.push((landmarks[i].z));
     }
     return vector;
 }
@@ -66,14 +64,20 @@ function onResultsHands(results) {
     canvasCtx3.restore();
 }
 
+function selectedModel() {
+    return '默认模型'
+}
+
 // 定时器回调函数
 function printLandmarksJSON() {
     const currentTime = Date.now();
     if (currentTime - lastUpdateTime <= currentInterval) {
         // 在允许的时间范围内，打印最新的 landmarksJSON
+        const model = selectedModel()
         const data = {
             type: 'Landmarks',
-            value: latestLandmarksJSON
+            value: latestLandmarksJSON,
+            selectedModel: model
         };
         try {
             fetch(serversIp, {
@@ -116,34 +120,28 @@ const camera = new Camera(video3, {
 
 function updateWord(newchar) {
     const outputWord = document.getElementById('output');
-    outputWord.textContent = outputWord.textContent + newchar
+    let currentText = outputWord.textContent;
 
-}
+    if (newchar === 'space') {
+        newchar = ' ';
+    } else if (newchar === 'del') {
+        // 如果 newchar 为 'del'，删除最后一个字符
+        currentText = currentText.slice(0, -1);
+    } else {
+        currentText = currentText + newchar;
+    }
 
-function getVideoLength() {
-    // 获取 .recognition_video 元素
-    const recognitionVideo = document.querySelector('.recognition_video');
-
-    // 获取元素的宽度和高度
-    const width = recognitionVideo.offsetWidth;
-    const height = recognitionVideo.offsetHeight;
-
-    // 计算对角线长度
-    diagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
-
-    // 输出对角线长度
-    console.log('对角线长度:', diagonal);
+    outputWord.textContent = currentText;
 }
 
 camera.start();
-getVideoLength();
 
 
 new ControlPanel(controlsElement, {
-    selfieMode: true,
+    selfieMode: false,
     maxNumHands: 2,
-    minDetectionConfidence: 0.9,
-    minTrackingConfidence: 0.9
+    minDetectionConfidence: 0.7,
+    minTrackingConfidence: 0.7
 })
     .add([
         new StaticText({ title: 'MediaPipe Hands' }),

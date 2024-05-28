@@ -2,13 +2,14 @@
 Date: 2024-05-25 22:41:42
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-27 14:33:46
+LastEditTime: 2024-05-28 13:26:24
 FilePath: \gesrec\serves\serves.py
 '''
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os
 from getNews import getNews
+from getPredict import get_predict
 
 app = Flask(__name__)
 CORS(app)
@@ -26,7 +27,9 @@ def getMessage():
         result['result'] = getNews(data['newsTitle'])
         return result, 200
     if 'type' in data and data['type'] == 'Landmarks':
-        result['result'] = 'success'
+        result['result'] = get_predict(eval(data['value']),
+                                       data['selectedModel'])
+
         return result, 200
     else:
         result['result'] = 'invalid request'
