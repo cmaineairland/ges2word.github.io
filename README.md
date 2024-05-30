@@ -2,7 +2,14 @@
  * @Date: 2024-05-25 22:07:41
  * @LastEditors: Qianshanju
  * @E-mail: z1939784351@gmail.com
- * @LastEditTime: 2024-05-30 13:56:19
+ * @LastEditTime: 2024-05-30 18:41:43
+ * @FilePath: \gesrec\README.md
+-->
+<!--
+ * @Date: 2024-05-25 22:07:41
+ * @LastEditors: Qianshanju
+ * @E-mail: z1939784351@gmail.com
+ * @LastEditTime: 2024-05-30 17:07:41
  * @FilePath: \gesrec\README.md
 -->
 # 支持自定义词典的手语识别系统
@@ -162,7 +169,7 @@ sudo tar xzf Python-3.10.0.tgz
 
 ```bash
 cd Python-3.10.0
-sudo ./configure --enable-optimizations
+sudo ./configure --enable-optimizations --with-openssl=/usr/include/openssl
 sudo make altinstall
 ```
 
