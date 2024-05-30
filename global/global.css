@@ -61,3 +61,8 @@
     /* 背景颜色，透明度可调整 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.logo {
+    width: 264px;
+    height: 62px;
+}
