@@ -2,7 +2,7 @@
  * @Date: 2024-05-25 22:07:41
  * @LastEditors: Qianshanju
  * @E-mail: z1939784351@gmail.com
- * @LastEditTime: 2024-05-30 18:41:43
+ * @LastEditTime: 2024-05-30 18:57:58
  * @FilePath: \gesrec\README.md
 -->
 <!--
@@ -143,7 +143,40 @@ vim index.html
 
 ![https配置成功](/markdownImage/查看https是否配置成功.png)
 
-#### 2.1.3 安装python3.10
+#### 2.1.3 安装OpenSSL
+
+（1）下载OpenSSL
+
+```bash
+cd /usr/src
+wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
+```
+
+（2）解压压缩包
+
+```bash
+tar -zxvf openssl-1.1.1n.tar.gz
+cd openssl-1.1.1n
+```
+
+（3）安装OpenSSL
+
+```bash
+./config --prefix=/usr/local/openssl   
+make 
+make install
+```
+
+（4）修改链接文件
+
+```bash
+mv /usr/bin/openssl /usr/bin/openssl.bak
+ln -sf /usr/local/openssl/bin/openssl /usr/bin/openssl
+echo "/usr/local/openssl/lib" >> /etc/ld.so.conf 
+ldconfig -v
+```
+
+#### 2.1.4 安装python3.10
 
 （1）安装基本开发工具
 
@@ -165,22 +198,42 @@ sudo wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
 sudo tar xzf Python-3.10.0.tgz
 ```
 
-（4）配置编译并安装python
+（4）修改SSL配置
 
 ```bash
-cd Python-3.10.0
-sudo ./configure --enable-optimizations --with-openssl=/usr/include/openssl
-sudo make altinstall
+cd Python-3.10.0 
+vim Module/Setup
+```
+
+第211行路径修改为OpenSSL编译的路径，
+
+第212-214解除注释。
+
+修改完成后如下：
+
+``` Makefile
+# socket line above, and edit the OPENSSL variable:
+OPENSSL=/usr/local/openssl
+_ssl _ssl.c \
+      -I$(OPENSSL)/include -L$(OPENSSL)/lib \
+      -lssl -lcrypto
+```
+
+（5）配置编译并安装python
+
+```bash
+./configure --prefix=/usr/local/python3.10
+make && make install
 ```
 
 （5）配置环境变量
 
 ```bash
-sudo alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1
-sudo alternatives --set python3 /usr/local/bin/python3.10
+sudo alternatives --install /usr/bin/python3 python3 /usr/local/python3.10/bin/python3.10 1
+sudo alternatives --set python3 /usr/local/python3.10/bin/python3.10
 ```
 
-#### 2.1.4 编写更新脚本
+#### 2.1.5 编写更新脚本
 
 （1）创建更新程序
 
