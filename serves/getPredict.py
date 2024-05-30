@@ -1,14 +1,21 @@
+'''
+Date: 2024-05-27 14:45:11
+LastEditors: Qianshanju
+E-mail: z1939784351@gmail.com
+LastEditTime: 2024-05-30 20:46:48
+FilePath: \gesrec\serves\getPredict.py
+'''
 import torch
 import json
 import os
 
 
 def getJsonData(selectedModel):
-    if os.name == 'nt':
-        json_file = 'model/20240527240527001001/dictionary.json'
 
-    elif os.name == 'posix':
-        json_file = '../model/20240527240527001001/dictionary.json'
+    json_file = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        'model/20240527240527001001', 'dictionary.json')
+
     with open(json_file, 'r', encoding='utf-8') as f:  # 打开JSON文件
         json_data = json.load(f)  # 读取JSON数据
     return json_data['dic']
@@ -49,4 +56,4 @@ if __name__ == '__main__':
         0.44368991255760193, 0.6767418384552002, -0.03890358284115791,
         0.42612385749816895, 0.6494215726852417, -0.031001262366771698
     ]
-    get_predict(inputs)
+    get_predict(inputs, '1')
