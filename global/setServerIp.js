@@ -1,4 +1,5 @@
 let serversIp = null;
+let canFetch = false;
 
 async function setServerIp() {
     const servers = [
@@ -18,6 +19,7 @@ async function setServerIp() {
             if (response.ok) {
                 serversIp = servers[i];
                 console.log(`Server IP set to: ${serversIp}`);
+                canFetch = true;
                 return;
             }
         } catch (error) {

@@ -3,9 +3,10 @@ function check_cookie() {
     const currentPathname = window.location.pathname;
     var parts = currentPathname.split(/\//);
     var lastElement = parts[parts.length - 2];
-    if (cookies == "" && lastElement != "log_in" && lastElement != "create_account") {
-        window.location.href = '../../pages/log_in/local.html';
+    if (cookies == "") {
+        window.location.href = '../../index.html';
     }
+
 
 }
 

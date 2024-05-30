@@ -1,9 +1,14 @@
 import torch
 import json
+import os
 
 
 def getJsonData(selectedModel):
-    json_file = 'model/20240527240527001001/dictionary.json'
+    if os.name == 'nt':
+        json_file = 'model/20240527240527001001/dictionary.json'
+
+    elif os.name == 'posix':
+        json_file = '../model/20240527240527001001/dictionary.json'
     with open(json_file, 'r', encoding='utf-8') as f:  # 打开JSON文件
         json_data = json.load(f)  # 读取JSON数据
     return json_data['dic']

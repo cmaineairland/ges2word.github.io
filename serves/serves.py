@@ -2,7 +2,7 @@
 Date: 2024-05-25 22:41:42
 LastEditors: Qianshanju
 E-mail: z1939784351@gmail.com
-LastEditTime: 2024-05-28 13:26:24
+LastEditTime: 2024-05-30 19:08:25
 FilePath: \gesrec\serves\serves.py
 '''
 from flask import Flask, jsonify, request
@@ -29,6 +29,10 @@ def getMessage():
     if 'type' in data and data['type'] == 'Landmarks':
         result['result'] = get_predict(eval(data['value']),
                                        data['selectedModel'])
+
+        return result, 200
+    if 'type' in data and data['type'] == 'log_in':
+        result['result'] = '123'
 
         return result, 200
     else:

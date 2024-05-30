@@ -71,7 +71,7 @@ function selectedModel() {
 // 定时器回调函数
 function printLandmarksJSON() {
     const currentTime = Date.now();
-    if (currentTime - lastUpdateTime <= currentInterval) {
+    if (currentTime - lastUpdateTime <= currentInterval && canFetch) {
         // 在允许的时间范围内，打印最新的 landmarksJSON
         const model = selectedModel()
         const data = {
